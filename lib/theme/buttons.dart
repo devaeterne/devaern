@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'colors.dart';
 
-class AppTextStyles {
-  static const heading = TextStyle(
-    fontSize: 28,
-    fontWeight: FontWeight.bold,
-    color: AppColors.text,
+class AppButtons {
+  static ButtonStyle primary = ElevatedButton.styleFrom(
+    backgroundColor: AppColors.primary,
+    foregroundColor: Colors.white,
+    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+    elevation: 2,
   );
 
-  static const subheading = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.w600,
-    color: AppColors.text,
+  static ButtonStyle outline = OutlinedButton.styleFrom(
+    foregroundColor: AppColors.primary,
+    side: const BorderSide(color: AppColors.primary),
+    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
   );
-
-  static const body = TextStyle(fontSize: 16, color: AppColors.text);
-
-  static const muted = TextStyle(fontSize: 14, color: AppColors.muted);
 }
