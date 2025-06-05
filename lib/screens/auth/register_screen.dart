@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:devaern/screens/home/home_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -55,7 +56,12 @@ class RegisterScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF5B21B6),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => const HomeScreen()),
+                  );
+                },
                 child: const Text("Kayıt Ol"),
               ),
               const SizedBox(height: 12),
