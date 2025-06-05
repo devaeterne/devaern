@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'register_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +24,18 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               const Text(
-                "Gücünü serbest bırak.",
+                "Aramıza katıl.",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.grey),
               ),
               const SizedBox(height: 32),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: "Adınız",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 16),
               TextField(
                 decoration: InputDecoration(
                   hintText: "E-posta adresiniz",
@@ -42,7 +48,6 @@ class LoginScreen extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: "Şifreniz",
                   border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.visibility_off),
                 ),
               ),
               const SizedBox(height: 24),
@@ -51,23 +56,14 @@ class LoginScreen extends StatelessWidget {
                   backgroundColor: Color(0xFF5B21B6),
                 ),
                 onPressed: () {},
-                child: const Text("Giriş Yap"),
+                child: const Text("Kayıt Ol"),
               ),
               const SizedBox(height: 12),
-              OutlinedButton.icon(
-                onPressed: () {},
-                icon: const Icon(Icons.g_mobiledata),
-                label: const Text("Google ile Giriş Yap"),
-              ),
-              const SizedBox(height: 16),
               TextButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const RegisterScreen()),
-                  );
+                  Navigator.pop(context); // Giriş ekranına dön
                 },
-                child: const Text("Hesabın yok mu? Kayıt Ol"),
+                child: const Text("Zaten hesabın var mı? Giriş Yap"),
               ),
             ],
           ),
