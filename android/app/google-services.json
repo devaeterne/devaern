@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "331103672965",
+    "project_id": "devaern-platform",
+    "storage_bucket": "devaern-platform.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331103672965:android:f1ca6a70fb2e238d49e7ec",
+        "android_client_info": {
+          "package_name": "com.example.devaern"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE04lGpZrCBksFqnnf7yKkgWwrhU-93XI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

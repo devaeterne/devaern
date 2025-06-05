@@ -1,14 +1,18 @@
-{
-  "welcome": "Welcome",
-  "start": "Get Started",
-  "hero_title": "Achieve More with Talented Freelancers",
-  "hero_subtitle": "Devaern brings together businesses and talented freelancers, offering the future of work today.",
-  "why_freelancer": "Why Freelancer?",
-  "popular_services": "Popular Services",
-  "search_title": "What service do you need?",
-  "search_hint": "Software, design, voice over...",
-  "sign_up": "Sign Up",
-  "login": "Login",
+{  
+"welcome": "Welcome",
+"start": "Get Started",
+"search_title": "What service do you need?",
+"sign_up": "Sign Up",
+"login": "Login",
+"hero_title": "Hire experts to bring your ideas to life",
+"hero_subtitle": "Connect with top freelancers and get your project done fast and right.",
+"search_hint": "Try “mobile app design”, “AI content”, ...",
+"search": "Search",
+"why_freelancer": "Why choose FreelanceX?",
+"popular_services": "Featured Freelancers",
+"community": "From our community",
+"footer_copyright": "© 2025 FreelanceX. All rights reserved.",
+"footer_links": "Terms | Privacy | Contact",
   "sidebar": {
     "home": "Home",
     "orders": "Orders",
@@ -18,7 +22,7 @@
     "ads": "My Services",
     "portfolio": "Portfolio",
     "decoin": "DECoin Account",
-    "rules": "Rules"
+    "rules": "Rules"    
   }
 }
 

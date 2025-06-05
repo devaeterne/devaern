@@ -35,7 +35,7 @@ class _MainLayoutState extends State<MainLayout> {
         return const AdsPage();
       case 'portfolio':
         return const PortfolioPage();
-      case 'bicoin':
+      case 'decoin':
         return const DecoinPage();
       case 'rules':
         return const RulesPage();

@@ -1,15 +1,26 @@
-// lib/main.dart (mobile / desktop için çalışır)
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:easy_localization/easy_localization.dart';
+
+import 'firebase_options.dart';
 import 'layout/home_layout.dart';
 import 'screens/pages/landing_page.dart';
-import 'firebase_options.dart';
+import 'screens/auth/login_page.dart';
+import 'screens/auth/register_page.dart';
+
+// Web platformuysa platform view registry'yi yükle
+import 'utils/platform_view_stub.dart'
+    if (dart.library.html) 'utils/platform_view_web.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  if (kIsWeb) {
+    registerGoogleButtonViewFactory(); // sadece Web için çalışır
+  }
 
   runApp(
     EasyLocalization(
@@ -40,6 +51,10 @@ class DevaernApp extends StatelessWidget {
         textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.black)),
       ),
       home: const HomeLayout(child: LandingPage()),
+      routes: {
+        '/login': (_) => const LoginPage(),
+        '/register': (_) => const RegisterPage(),
+      },
     );
   }
 }

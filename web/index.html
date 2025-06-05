@@ -1,38 +1,62 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
-
+  <base href="/">
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Devaern freelance platform">
 
-  <!-- iOS meta tags & icons -->
+  <!-- ✅ Google Sign-In -->
+  <meta name="google-signin-client_id"
+    content="331103672965-jivv18a6asq1gl8ib6fj4j92vkiini0k.apps.googleusercontent.com" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <!-- iOS / Web app -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="devaern">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>devaern</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="manifest" href="manifest.json">
+
+  <title>Devaern</title>
 </head>
+
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <!-- ✅ Flutter Web Bootstrap -->
+  <script src="flutter_bootstrap.js" async defer></script>
+
+  <!-- ✅ Google Sign-In render -->
+  <script>
+    function initGoogleLogin() {
+      const container = document.getElementById("google-button-container");
+      if (!window.google || !google.accounts || !container) {
+        // Retry after 300ms
+        setTimeout(initGoogleLogin, 300);
+        return;
+      }
+
+      google.accounts.id.initialize({
+        client_id: "331103672965-jivv18a6asq1gl8ib6fj4j92vkiini0k.apps.googleusercontent.com",
+        callback: function (response) {
+          const event = new CustomEvent("google-id-token", {
+            detail: response.credential,
+          });
+          window.dispatchEvent(event);
+        }
+      });
+
+      google.accounts.id.renderButton(container, {
+        theme: "outline",
+        size: "large",
+        width: "100%",
+      });
+    }
+
+    window.addEventListener('load', initGoogleLogin);
+  </script>
+
 </body>
+
 </html>

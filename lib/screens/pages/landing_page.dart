@@ -1,100 +1,82 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+import '../../theme/colors.dart';
+import '../../theme/text_styles.dart';
+import '../../theme/buttons.dart';
+import '../../theme/icons.dart';
 
-class LandingPage extends StatelessWidget {
+class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: CustomScrollView(
-        slivers: [
-          _buildAppBar(),
-          SliverToBoxAdapter(child: _buildHeroSection(context)),
-          SliverToBoxAdapter(child: _buildCategoriesSection()),
-          SliverToBoxAdapter(child: _buildFeaturedFreelancers()),
-          SliverToBoxAdapter(child: _buildBenefitsSection()),
-          SliverToBoxAdapter(child: _buildBlogSection()),
-          SliverToBoxAdapter(child: _buildFooter()),
-        ],
-      ),
-    );
-  }
+  State<LandingPage> createState() => _LandingPageState();
+}
 
-  SliverAppBar _buildAppBar() {
-    return SliverAppBar(
-      floating: true,
-      backgroundColor: Colors.white,
-      elevation: 1,
-      title: Row(
-        children: [
-          const FlutterLogo(),
-          const SizedBox(width: 8),
-          const Text('FreelanceX', style: TextStyle(color: Colors.black)),
-        ],
-      ),
-      actions: [
-        TextButton(onPressed: () {}, child: const Text("Explore")),
-        TextButton(onPressed: () {}, child: const Text("Become a Seller")),
-        TextButton(onPressed: () {}, child: const Text("Sign In")),
-        TextButton(
-          onPressed: () {},
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: Colors.green,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: const Text('Join', style: TextStyle(color: Colors.white)),
-          ),
-        ),
+class _LandingPageState extends State<LandingPage> {
+  @override
+  Widget build(BuildContext context) {
+    context.locale; // 🌐 dil değiştiğinde rebuild için takip
+
+    return Column(
+      children: [
+        _buildHeroSection(context),
+        _buildCategoriesSection(),
+        _buildFeaturedFreelancers(),
+        _buildBenefitsSection(),
+        _buildBlogSection(),
+        _buildFooter(),
       ],
     );
   }
 
   Widget _buildHeroSection(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(24),
-      color: const Color(0xFFF0FFF4),
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 64),
+      color: AppColors.surface,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 40),
-          const Text(
-            "Find the perfect freelance services for your business",
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+          Text(
+            "hero_title".tr(),
+            style: AppTextStyles.heading.copyWith(fontSize: 32),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 16),
+          Text(
+            "hero_subtitle".tr(),
+            style: AppTextStyles.body.copyWith(
+              fontSize: 18,
+              color: AppColors.muted,
+            ),
+          ),
+          const SizedBox(height: 32),
           Row(
             children: [
               Expanded(
                 child: TextField(
                   decoration: InputDecoration(
-                    hintText: 'What service are you looking for?',
-                    prefixIcon: const Icon(Icons.search),
+                    hintText: 'search_hint'.tr(),
+                    prefixIcon: const Icon(AppIcons.search),
+                    hintStyle: AppTextStyles.muted,
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 18,
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(32),
+                      borderSide: const BorderSide(color: AppColors.iconMuted),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: 16),
               ElevatedButton(
                 onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(32),
-                  ),
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text("Search"),
-                ),
+                style: AppButtons.primary,
+                child: Text("search".tr()),
               ),
             ],
           ),
-          const SizedBox(height: 40),
         ],
       ),
     );
@@ -118,6 +100,7 @@ class LandingPage extends StatelessWidget {
           itemBuilder: (context, index) => Chip(
             label: Text(categories[index]),
             backgroundColor: Colors.grey[200],
+            labelStyle: AppTextStyles.body,
           ),
         ),
       ),
@@ -130,10 +113,7 @@ class LandingPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Featured Freelancers",
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-          ),
+          Text("popular_services".tr(), style: AppTextStyles.subheading),
           const SizedBox(height: 12),
           SizedBox(
             height: 200,
@@ -149,14 +129,11 @@ class LandingPage extends StatelessWidget {
                 ),
                 padding: const EdgeInsets.all(8),
                 child: Column(
-                  children: [
-                    const CircleAvatar(radius: 32),
-                    const SizedBox(height: 8),
-                    const Text(
-                      "Jane Doe",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    const Text("UI/UX Designer"),
+                  children: const [
+                    CircleAvatar(radius: 32),
+                    SizedBox(height: 8),
+                    Text("Jane Doe", style: AppTextStyles.body),
+                    Text("UI/UX Designer", style: AppTextStyles.muted),
                   ],
                 ),
               ),
@@ -172,18 +149,21 @@ class LandingPage extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text(
-            "Why choose FreelanceX?",
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 8),
-          ListTile(
+        children: [
+          Text("why_freelancer".tr(), style: AppTextStyles.subheading),
+          const SizedBox(height: 8),
+          const ListTile(
             leading: Icon(Icons.check),
             title: Text("Trusted by thousands"),
           ),
-          ListTile(leading: Icon(Icons.check), title: Text("Secure payments")),
-          ListTile(leading: Icon(Icons.check), title: Text("24/7 support")),
+          const ListTile(
+            leading: Icon(Icons.check),
+            title: Text("Secure payments"),
+          ),
+          const ListTile(
+            leading: Icon(Icons.check),
+            title: Text("24/7 support"),
+          ),
         ],
       ),
     );
@@ -194,15 +174,15 @@ class LandingPage extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
+          Text("community".tr(), style: AppTextStyles.subheading),
+          const SizedBox(height: 12),
           Text(
-            "From our community",
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            "- How to price your services as a freelancer",
+            style: AppTextStyles.body,
           ),
-          SizedBox(height: 12),
-          Text("- How to price your services as a freelancer"),
-          Text("- Building a strong profile"),
-          Text("- Growing your freelance business"),
+          Text("- Building a strong profile", style: AppTextStyles.body),
+          Text("- Growing your freelance business", style: AppTextStyles.body),
         ],
       ),
     );
@@ -210,13 +190,14 @@ class LandingPage extends StatelessWidget {
 
   Widget _buildFooter() {
     return Container(
-      color: Colors.grey[100],
+      width: double.infinity,
+      color: AppColors.surface,
       padding: const EdgeInsets.all(24),
       child: Column(
-        children: const [
-          Text("© 2025 FreelanceX. All rights reserved."),
-          SizedBox(height: 8),
-          Text("Terms | Privacy | Contact"),
+        children: [
+          Text("footer_copyright".tr(), style: AppTextStyles.muted),
+          const SizedBox(height: 8),
+          Text("footer_links".tr(), style: AppTextStyles.muted),
         ],
       ),
     );
