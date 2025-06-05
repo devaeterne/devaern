@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../theme/colors.dart';
 import '../../../theme/text_styles.dart';
 import '../../../theme/buttons.dart';
-import 'package:devaern/theme/text_styles.dart';
 
 class ServiceCard extends StatelessWidget {
   final String title;
