@@ -6,12 +6,12 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: constraints.maxHeight),
-              child: IntrinsicHeight(
+      body: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -45,6 +45,11 @@ class LandingPage extends StatelessWidget {
                                 vertical: 16,
                               ),
                               backgroundColor: Colors.red,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              elevation: 4,
+                              shadowColor: Colors.black45,
                             ),
                             child: const Text('Hadi Başla'),
                           ),
@@ -110,14 +115,16 @@ class LandingPage extends StatelessWidget {
                     // CTA
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 40),
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/register');
-                        },
-                        child: const Text(
-                          'Hemen Kaydol',
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
+                      child: Center(
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/register');
+                          },
+                          child: const Text(
+                            'Hemen Kaydol',
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                            ),
                           ),
                         ),
                       ),
@@ -125,9 +132,9 @@ class LandingPage extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
