@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/auth/login_screen.dart';
-import 'screens/auth/register_screen.dart';
-import 'screens/home/home_screen.dart';
-import 'theme/colors.dart';
-import 'theme/text_styles.dart';
-import 'theme/buttons.dart';
-import 'layout/main_layout.dart';
-import 'screens/home/widgets/home_content.dart';
+import 'screens/home/home_screen.dart'; // Giriş ekranı burası olacak
 
 void main() {
   runApp(const DevaernApp());
@@ -21,17 +14,12 @@ class DevaernApp extends StatelessWidget {
       title: 'Devaern',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: AppColors.background,
-        primaryColor: AppColors.primary,
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: AppButtons.primary, // 🔥 tüm ElevatedButton'lar kırmızı olacak
-        ),
+        primaryColor: Colors.black,
+        scaffoldBackgroundColor: Colors.white,
         fontFamily: 'Inter',
-        useMaterial3: true,
+        textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.black)),
       ),
-
-      home:
-          const HomeScreen(), // burada artık login değil, layoutlu anasayfa başlıyor
+      home: const HomeScreen(), // Giriş noktası
     );
   }
 }

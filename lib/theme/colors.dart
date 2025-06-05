@@ -9,4 +9,6 @@ class AppColors {
 
   static const text = Color(0xFF121212);
   static const muted = Color(0xFF6C757D);
+  static const sidebarBg = Colors.white;
+  static const iconMuted = Color(0xFFB0B0B0);
 }

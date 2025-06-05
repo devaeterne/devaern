@@ -20,7 +20,6 @@ class InputField extends StatelessWidget {
       obscureText: obscure,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: const TextStyle(color: AppColors.textMuted),
         filled: true,
         fillColor: Colors.white,
         contentPadding: const EdgeInsets.symmetric(

@@ -13,7 +13,12 @@ class MainLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveLayout(
       mobile: Scaffold(
-        appBar: AppBar(title: const Text("Devaern")),
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: const Text("Devaern"),
+          backgroundColor: Colors.black,
+          foregroundColor: Colors.white,
+        ),
         drawer: const Drawer(child: Sidebar()),
         body: Column(
           children: [
@@ -23,6 +28,7 @@ class MainLayout extends StatelessWidget {
         ),
       ),
       desktop: Scaffold(
+        backgroundColor: Colors.white,
         body: Column(
           children: [
             const Navbar(),
@@ -30,7 +36,12 @@ class MainLayout extends StatelessWidget {
               child: Row(
                 children: [
                   const Sidebar(),
-                  Expanded(child: child),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(32),
+                      child: child,
+                    ),
+                  ),
                 ],
               ),
             ),

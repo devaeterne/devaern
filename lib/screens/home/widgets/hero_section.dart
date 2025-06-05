@@ -1,27 +1,50 @@
 import 'package:flutter/material.dart';
-import '../../../theme/text_styles.dart';
-import '../../../theme/buttons.dart';
+import '../../../components/button_primary.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text("Freelancer dünyasına adım at", style: AppTextStyles.heading),
-        const SizedBox(height: 12),
-        Text(
-          "İşlerini güvenle teslim edecek yetenekli freelancerları bul.",
-          style: AppTextStyles.body,
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.85,
+      width: double.infinity,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                  "Yetenekli Freelancerlarla Daha Fazla İş Başarın",
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 16),
+                const Text(
+                  "Devaern, özgür çalışan yeteneklerle işletmeleri bir araya getiren, geleceğin çalışma modelini bugünden sunan freelance platformudur.",
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 24),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ButtonPrimary(text: "Hadi Başla", onPressed: () {}),
+                    const SizedBox(width: 16),
+                    OutlinedButton(
+                      onPressed: () {},
+                      child: const Text("Neden Freelancer?"),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ),
-        const SizedBox(height: 24),
-        ElevatedButton(
-          onPressed: () {},
-          child: const Text("Freelancerları Keşfet"),
-        ),
-      ],
+      ),
     );
   }
 }
