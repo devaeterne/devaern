@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'widgets/search_banner.dart';
-import 'widgets/category_grid.dart';
-import 'widgets/freelancer_list.dart';
-import 'widgets/testimonials.dart';
-import 'widgets/footer.dart';
+import '../../components/button_primary.dart';
+import '../../components/input_field.dart';
+import '../../components/card_box.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,21 +9,23 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: const [
-          SizedBox(height: 24),
-          SearchBanner(),
-          SizedBox(height: 32),
-          CategoryGrid(),
-          SizedBox(height: 32),
-          FreelancerList(),
-          SizedBox(height: 32),
-          Testimonials(),
-          SizedBox(height: 32),
-          Footer(),
-        ],
+      backgroundColor: const Color(0xFFF9FAFB),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: CardBox(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const InputField(hintText: "E-posta adresi"),
+                const SizedBox(height: 16),
+                const InputField(hintText: "Şifre", obscure: true),
+                const SizedBox(height: 24),
+                ButtonPrimary(text: "Giriş Yap", onPressed: () {}),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
