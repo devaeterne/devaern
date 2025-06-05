@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
-import '../auth/register_screen.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -8,152 +6,217 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return SingleChildScrollView(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(minHeight: constraints.maxHeight),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    // Hero Section
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 48,
-                      ),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Yetenekli freelancerlarla\ndaha çok iş yapın.',
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.headlineMedium
-                                ?.copyWith(fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(height: 16),
-                          Text(
-                            'Bionluk, yetenekli freelancerların kendilerine uygun işletmeler ve girişimlerle\n'
-                            'buluştuğu, topluluk mantığıyla işleyen özgürlükçü bir çalışma platformudur.',
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.bodyLarge,
-                          ),
-                          const SizedBox(height: 24),
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 32,
-                                vertical: 16,
-                              ),
-                              backgroundColor: Colors.red,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              elevation: 4,
-                              shadowColor: Colors.black45,
-                            ),
-                            child: const Text('Hadi Başla'),
-                          ),
-                        ],
-                      ),
-                    ),
+      backgroundColor: Colors.white,
+      body: CustomScrollView(
+        slivers: [
+          _buildAppBar(),
+          SliverToBoxAdapter(child: _buildHeroSection(context)),
+          SliverToBoxAdapter(child: _buildCategoriesSection()),
+          SliverToBoxAdapter(child: _buildFeaturedFreelancers()),
+          SliverToBoxAdapter(child: _buildBenefitsSection()),
+          SliverToBoxAdapter(child: _buildBlogSection()),
+          SliverToBoxAdapter(child: _buildFooter()),
+        ],
+      ),
+    );
+  }
 
-                    // Neden Freelancer?
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 32,
-                      ),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Neden Freelancer?',
-                            style: Theme.of(context).textTheme.headlineSmall
-                                ?.copyWith(fontWeight: FontWeight.w600),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            'Geleceğin "çalışma" modeliyle bugünden tanışın.',
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                          const SizedBox(height: 32),
-                          Wrap(
-                            spacing: 32,
-                            runSpacing: 32,
-                            alignment: WrapAlignment.center,
-                            children: [
-                              _featureCard(
-                                imageUrl:
-                                    'https://gcdn.bionluk.com/site/general/search_bi.png',
-                                title: 'Sınırsızlık, Özgürleştirir',
-                                description:
-                                    'Sınırsız düşünebilmen için bütün sınırları kaldırdık. Artık yalnızca bulunduğun '
-                                    'bölgeden değil dünyanın her yerinden global yeteneklerle, özgürce çalışabilmen için...',
-                              ),
-                              _featureCard(
-                                imageUrl:
-                                    'https://gcdn.bionluk.com/site/general/contact-order_bi.png',
-                                title: 'Bakış Açını Genişlet',
-                                description:
-                                    'El elden, göz gözden üstündür. Hedef kitleni ne kadar genişletmek istersen, '
-                                    'o kadar farklı gözle bakmayı öğrenirsin. Biz senin için her pencereyi açtık, bakmak sana kaldı.',
-                              ),
-                              _featureCard(
-                                imageUrl:
-                                    'https://gcdn.bionluk.com/site/general/done_bi.png',
-                                title: 'Aklın Yolu Free',
-                                description:
-                                    'Becerikli bir işveren, kaynaklarını en verimli nasıl kullanacağını bilen iş verendir. '
-                                    'Kaynaklarını olabildiğince verimli kullanmak adına freelancer’lara şans verin; '
-                                    'göreceksin ki her akıl, her işe değer katar.',
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+  SliverAppBar _buildAppBar() {
+    return SliverAppBar(
+      floating: true,
+      backgroundColor: Colors.white,
+      elevation: 1,
+      title: Row(
+        children: [
+          const FlutterLogo(),
+          const SizedBox(width: 8),
+          const Text('FreelanceX', style: TextStyle(color: Colors.black)),
+        ],
+      ),
+      actions: [
+        TextButton(onPressed: () {}, child: const Text("Explore")),
+        TextButton(onPressed: () {}, child: const Text("Become a Seller")),
+        TextButton(onPressed: () {}, child: const Text("Sign In")),
+        TextButton(
+          onPressed: () {},
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            decoration: BoxDecoration(
+              color: Colors.green,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Text('Join', style: TextStyle(color: Colors.white)),
+          ),
+        ),
+      ],
+    );
+  }
 
-                    // CTA
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 40),
-
-                          ),
-                        ),
-                      ),
+  Widget _buildHeroSection(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(24),
+      color: const Color(0xFFF0FFF4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 40),
+          const Text(
+            "Find the perfect freelance services for your business",
+            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 20),
+          Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'What service are you looking for?',
+                    prefixIcon: const Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(32),
                     ),
-                  ],
+                  ),
                 ),
               ),
-            );
-          },
+              const SizedBox(width: 12),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(32),
+                  ),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Text("Search"),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 40),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCategoriesSection() {
+    final categories = [
+      "Graphics & Design",
+      "Programming",
+      "Writing",
+      "Marketing",
+    ];
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: SizedBox(
+        height: 100,
+        child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          itemCount: categories.length,
+          separatorBuilder: (_, __) => const SizedBox(width: 16),
+          itemBuilder: (context, index) => Chip(
+            label: Text(categories[index]),
+            backgroundColor: Colors.grey[200],
+          ),
         ),
       ),
     );
   }
 
-  Widget _featureCard({
-    required String imageUrl,
-    required String title,
-    required String description,
-  }) {
-    return SizedBox(
-      width: 280,
+  Widget _buildFeaturedFreelancers() {
+    return Padding(
+      padding: const EdgeInsets.all(16),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(imageUrl, height: 160),
-          const SizedBox(height: 16),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          const Text(
+            "Featured Freelancers",
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 8),
-          Text(
-            description,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 14, color: Colors.black54),
+          const SizedBox(height: 12),
+          SizedBox(
+            height: 200,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: 4,
+              separatorBuilder: (_, __) => const SizedBox(width: 16),
+              itemBuilder: (_, i) => Container(
+                width: 160,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade300),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  children: [
+                    const CircleAvatar(radius: 32),
+                    const SizedBox(height: 8),
+                    const Text(
+                      "Jane Doe",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const Text("UI/UX Designer"),
+                  ],
+                ),
+              ),
+            ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBenefitsSection() {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Text(
+            "Why choose FreelanceX?",
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 8),
+          ListTile(
+            leading: Icon(Icons.check),
+            title: Text("Trusted by thousands"),
+          ),
+          ListTile(leading: Icon(Icons.check), title: Text("Secure payments")),
+          ListTile(leading: Icon(Icons.check), title: Text("24/7 support")),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBlogSection() {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Text(
+            "From our community",
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 12),
+          Text("- How to price your services as a freelancer"),
+          Text("- Building a strong profile"),
+          Text("- Growing your freelance business"),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFooter() {
+    return Container(
+      color: Colors.grey[100],
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        children: const [
+          Text("© 2025 FreelanceX. All rights reserved."),
+          SizedBox(height: 8),
+          Text("Terms | Privacy | Contact"),
         ],
       ),
     );
