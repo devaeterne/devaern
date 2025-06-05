@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../components/navbar.dart';
 import '../components/sidebar.dart';
-import '../components/footer.dart';
 import '../screens/pages/home_page.dart';
 import '../screens/pages/orders_page.dart';
 import '../screens/pages/requests_page.dart';
@@ -75,7 +74,6 @@ class _MainLayoutState extends State<MainLayout> {
               ],
             ),
           ),
-          const Footer(),
         ],
       ),
     );

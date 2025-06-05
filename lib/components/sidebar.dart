@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'sidebar_item.dart';
 
-class Sidebar extends StatelessWidget {
+class Sidebar extends StatefulWidget {
   final String activeKey;
-  final void Function(String) onItemSelected;
+  final Function(String) onItemSelected;
 
   const Sidebar({
     super.key,
@@ -13,6 +12,11 @@ class Sidebar extends StatelessWidget {
     required this.onItemSelected,
   });
 
+  @override
+  State<Sidebar> createState() => _SidebarState();
+}
+
+class _SidebarState extends State<Sidebar> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,56 +40,69 @@ class Sidebar extends StatelessWidget {
           SidebarItem(
             icon: LucideIcons.home,
             labelKey: 'sidebar.home',
-            isActive: activeKey == 'home',
-            onTap: () => onItemSelected('home'),
+            isActive: widget.activeKey == 'home',
+            onTap: () => widget.onItemSelected('home'),
           ),
           SidebarItem(
             icon: LucideIcons.shoppingBag,
             labelKey: 'sidebar.orders',
-            isActive: activeKey == 'orders',
-            onTap: () => onItemSelected('orders'),
+            isActive: widget.activeKey == 'orders',
+            onTap: () => widget.onItemSelected('orders'),
           ),
           SidebarItem(
             icon: LucideIcons.mailQuestion,
             labelKey: 'sidebar.requests',
-            isActive: activeKey == 'requests',
-            onTap: () => onItemSelected('requests'),
+            isActive: widget.activeKey == 'requests',
+            onTap: () => widget.onItemSelected('requests'),
           ),
           SidebarItem(
             icon: LucideIcons.list,
             labelKey: 'sidebar.lists',
-            isActive: activeKey == 'lists',
-            onTap: () => onItemSelected('lists'),
+            isActive: widget.activeKey == 'lists',
+            onTap: () => widget.onItemSelected('lists'),
           ),
           SidebarItem(
             icon: LucideIcons.wallet,
             labelKey: 'sidebar.wallet',
-            isActive: activeKey == 'wallet',
-            onTap: () => onItemSelected('wallet'),
+            isActive: widget.activeKey == 'wallet',
+            onTap: () => widget.onItemSelected('wallet'),
           ),
           SidebarItem(
             icon: LucideIcons.megaphone,
             labelKey: 'sidebar.ads',
-            isActive: activeKey == 'ads',
-            onTap: () => onItemSelected('ads'),
+            isActive: widget.activeKey == 'ads',
+            onTap: () => widget.onItemSelected('ads'),
           ),
           SidebarItem(
             icon: LucideIcons.briefcase,
             labelKey: 'sidebar.portfolio',
-            isActive: activeKey == 'portfolio',
-            onTap: () => onItemSelected('portfolio'),
+            isActive: widget.activeKey == 'portfolio',
+            onTap: () => widget.onItemSelected('portfolio'),
           ),
           SidebarItem(
             icon: LucideIcons.coins,
             labelKey: 'sidebar.decoin',
-            isActive: activeKey == 'decoin',
-            onTap: () => onItemSelected('decoin'),
+            isActive: widget.activeKey == 'decoin',
+            onTap: () => widget.onItemSelected('decoin'),
           ),
           SidebarItem(
             icon: LucideIcons.shieldCheck,
             labelKey: 'sidebar.rules',
-            isActive: activeKey == 'rules',
-            onTap: () => onItemSelected('rules'),
+            isActive: widget.activeKey == 'rules',
+            onTap: () => widget.onItemSelected('rules'),
+          ),
+
+          const Spacer(),
+
+          // 🦶 Footer text in sidebar
+          Center(
+            child: Text(
+              '© 2025 Devaern',
+              style: TextStyle(
+                color: Colors.black.withOpacity(0.5),
+                fontSize: 12,
+              ),
+            ),
           ),
         ],
       ),

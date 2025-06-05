@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../theme/colors.dart';
 
 class CardBox extends StatelessWidget {
   final Widget child;

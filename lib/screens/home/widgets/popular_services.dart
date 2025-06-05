@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../services/widgets/service_card.dart';
+import 'service_card.dart';
 
 class PopularServices extends StatelessWidget {
   const PopularServices({super.key});
@@ -15,6 +15,18 @@ class PopularServices extends StatelessWidget {
           freelancer: "Ahmet T.",
           price: 750,
           imageUrl: "https://picsum.photos/id/1011/300/200",
+        ),
+        ServiceCard(
+          title: "Mobil Uygulama",
+          freelancer: "Zeynep K.",
+          price: 2500,
+          imageUrl: "https://picsum.photos/id/1012/300/200",
+        ),
+        ServiceCard(
+          title: "Çeviri Hizmeti",
+          freelancer: "Berk A.",
+          price: 450,
+          imageUrl: "https://picsum.photos/id/1013/300/200",
         ),
         ServiceCard(
           title: "Mobil Uygulama",
