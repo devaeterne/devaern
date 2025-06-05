@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
-import '../../components/button_primary.dart';
-import '../../components/input_field.dart';
-import '../../components/card_box.dart';
+import '../../layout/main_layout.dart';
+import 'widgets/hero_section.dart';
+import 'widgets/popular_services.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF9FAFB),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: CardBox(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const InputField(hintText: "E-posta adresi"),
-                const SizedBox(height: 16),
-                const InputField(hintText: "Şifre", obscure: true),
-                const SizedBox(height: 24),
-                ButtonPrimary(text: "Giriş Yap", onPressed: () {}),
-              ],
+    return MainLayout(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            HeroSection(),
+            SizedBox(height: 48),
+            Text(
+              "Popüler Hizmetler",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-          ),
+            SizedBox(height: 16),
+            PopularServices(),
+          ],
         ),
       ),
     );
