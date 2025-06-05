@@ -7,6 +7,8 @@
   "popular_services": "Popular Services",
   "search_title": "What service do you need?",
   "search_hint": "Software, design, voice over...",
+  "sign_up": "Sign Up",
+  "login": "Login",
   "sidebar": {
     "home": "Home",
     "orders": "Orders",
