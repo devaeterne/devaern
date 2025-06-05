@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:devaern/layout/main_layout.dart'; // Layout'u buradan çekiyoruz
 import 'widgets/hero_section.dart';
 import 'widgets/popular_services.dart';
@@ -11,15 +12,15 @@ class HomeScreen extends StatelessWidget {
     return MainLayout(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          HeroSection(),
-          SizedBox(height: 48),
+        children: [
+          const HeroSection(),
+          const SizedBox(height: 48),
           Text(
-            "Popüler Hizmetler",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            'popular_services'.tr(),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 16),
-          PopularServices(),
+          const SizedBox(height: 16),
+          const PopularServices(),
         ],
       ),
     );

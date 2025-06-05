@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../../components/button_primary.dart';
 
 class HeroSection extends StatelessWidget {
@@ -18,25 +19,25 @@ class HeroSection extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
-                  "Yetenekli Freelancerlarla Daha Fazla İş Başarın",
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                Text(
+                  'hero_title'.tr(),
+                  style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 16),
-                const Text(
-                  "Devaern, özgür çalışan yeteneklerle işletmeleri bir araya getiren, geleceğin çalışma modelini bugünden sunan freelance platformudur.",
+                Text(
+                  'hero_subtitle'.tr(),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ButtonPrimary(text: "Hadi Başla", onPressed: () {}),
+                    ButtonPrimary(text: 'start'.tr(), onPressed: () {}),
                     const SizedBox(width: 16),
                     OutlinedButton(
                       onPressed: () {},
-                      child: const Text("Neden Freelancer?"),
+                      child: Text('why_freelancer'.tr()),
                     ),
                   ],
                 ),
