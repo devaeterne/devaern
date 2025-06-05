@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../auth/register_screen.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -112,7 +113,12 @@ class LandingPage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 40),
                       child: TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/register');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const RegisterScreen(),
+                            ),
+                          );
                         },
                         child: const Text(
                           'Hemen Kaydol',
