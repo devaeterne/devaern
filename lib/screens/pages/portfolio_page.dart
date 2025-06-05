@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class PortfolioPage extends StatelessWidget {
+  const PortfolioPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,9 +10,11 @@ class HomePage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '${'sidebar.home'.tr()} Page',
+          'sidebar.portfolio'.tr(),
           style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
+        const SizedBox(height: 16),
+        const Text('Portfolio içeriği buraya gelecek...'),
       ],
     );
   }

@@ -2,52 +2,81 @@ import 'package:flutter/material.dart';
 import '../components/navbar.dart';
 import '../components/sidebar.dart';
 import '../components/footer.dart';
-import 'responsive_layout.dart';
+import '../screens/pages/home_page.dart';
+import '../screens/pages/orders_page.dart';
+import '../screens/pages/requests_page.dart';
+import '../screens/pages/lists_page.dart';
+import '../screens/pages/wallet_page.dart';
+import '../screens/pages/ads_page.dart';
+import '../screens/pages/portfolio_page.dart';
+import '../screens/pages/decoin_page.dart';
+import '../screens/pages/rules_page.dart';
 
-class MainLayout extends StatelessWidget {
-  final Widget child;
+class MainLayout extends StatefulWidget {
+  const MainLayout({super.key});
 
-  const MainLayout({super.key, required this.child});
+  @override
+  State<MainLayout> createState() => _MainLayoutState();
+}
+
+class _MainLayoutState extends State<MainLayout> {
+  String activePage = 'home';
+
+  Widget _getActivePage() {
+    switch (activePage) {
+      case 'orders':
+        return const OrdersPage();
+      case 'requests':
+        return const RequestsPage();
+      case 'lists':
+        return const ListsPage();
+      case 'wallet':
+        return const WalletPage();
+      case 'ads':
+        return const AdsPage();
+      case 'portfolio':
+        return const PortfolioPage();
+      case 'bicoin':
+        return const DecoinPage();
+      case 'rules':
+        return const RulesPage();
+      case 'home':
+      default:
+        return const HomePage();
+    }
+  }
+
+  void _onSidebarItemTap(String pageKey) {
+    setState(() {
+      activePage = pageKey;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveLayout(
-      mobile: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: const Text("Devaern"),
-          backgroundColor: Colors.black,
-          foregroundColor: Colors.white,
-        ),
-        drawer: const Drawer(child: Sidebar()),
-        body: Column(
-          children: [
-            Expanded(child: child),
-            const Footer(),
-          ],
-        ),
-      ),
-      desktop: Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            const Navbar(),
-            Expanded(
-              child: Row(
-                children: [
-                  const Sidebar(),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      padding: const EdgeInsets.all(32),
-                      child: child,
-                    ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          const NavbarWidget(),
+          Expanded(
+            child: Row(
+              children: [
+                Sidebar(
+                  activeKey: activePage,
+                  onItemSelected: _onSidebarItemTap,
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.all(32),
+                    child: _getActivePage(),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            const Footer(),
-          ],
-        ),
+          ),
+          const Footer(),
+        ],
       ),
     );
   }

@@ -6,5 +6,16 @@
   "why_freelancer": "Why Freelancer?",
   "popular_services": "Popular Services",
   "search_title": "What service do you need?",
-  "search_hint": "Software, design, voice over..."
+  "search_hint": "Software, design, voice over...",
+  "sidebar": {
+    "home": "Home",
+    "orders": "Orders",
+    "requests": "Requests",
+    "lists": "Lists",
+    "wallet": "Wallet",
+    "ads": "My Services",
+    "portfolio": "Portfolio",
+    "decoin": "DECoin Account",
+    "rules": "Rules"
+  }
 }

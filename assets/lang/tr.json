@@ -6,5 +6,16 @@
   "why_freelancer": "Neden Freelancer?",
   "popular_services": "Popüler Hizmetler",
   "search_title": "Ne hizmete ihtiyacın var?",
-  "search_hint": "Yazılım, tasarım, seslendirme..."
+  "search_hint": "Yazılım, tasarım, seslendirme...",
+  "sidebar": {
+    "home": "Anasayfa",
+    "orders": "Siparişlerim",
+    "requests": "İsteklerim",
+    "lists": "Listelerim",
+    "wallet": "Bakiyem",
+    "ads": "İlanlarım",
+    "portfolio": "Portfolyom",
+    "decoin": "Decoin Hesabım",
+    "rules": "Topluluk Kuralları"
+  }
 }

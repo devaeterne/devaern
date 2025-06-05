@@ -10,9 +10,11 @@ class HomePage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '${'sidebar.home'.tr()} Page',
+          'sidebar.home'.tr(),
           style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
+        const SizedBox(height: 16),
+        const Text('Ana sayfa içeriği buraya gelecek...'),
       ],
     );
   }

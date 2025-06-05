@@ -1,14 +1,20 @@
+import 'package:devaern/layout/main_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'screens/home/home_screen.dart'; // Giriş ekranı burası olacak
+import 'screens/home/home_screen.dart'; // Giriş ekranı
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+
   runApp(
     EasyLocalization(
-      supportedLocales: const [Locale('en'), Locale('tr'), Locale('cg')],
-      path: 'assets/lang',
+      supportedLocales: const [
+        Locale('en'), // English
+        Locale('tr'), // Turkish
+        Locale('me'), // Montenegrin
+      ],
+      path: 'assets/lang', // JSON çeviri dosyalarının yolu
       fallbackLocale: const Locale('en'),
       child: const DevaernApp(),
     ),
@@ -32,7 +38,7 @@ class DevaernApp extends StatelessWidget {
         fontFamily: 'Inter',
         textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.black)),
       ),
-      home: const HomeScreen(), // Giriş noktası
+      home: const MainLayout(), // Başlangıç sayfası
     );
   }
 }
