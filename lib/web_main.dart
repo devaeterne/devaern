@@ -8,6 +8,7 @@ import 'layout/home_layout.dart';
 import 'screens/pages/landing_page.dart';
 import 'screens/auth/login_page.dart';
 import 'screens/auth/register_page.dart';
+import 'package:devaern/layout/main_layout.dart';
 
 // Web platformuysa platform view registry'yi yükle
 import 'utils/platform_view_stub.dart'
@@ -54,6 +55,7 @@ class DevaernApp extends StatelessWidget {
       routes: {
         '/login': (_) => const LoginPage(),
         '/register': (_) => const RegisterPage(),
+        '/dashboard': (_) => const MainLayout(),
       },
     );
   }

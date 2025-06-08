@@ -5,6 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'layout/home_layout.dart';
 import 'screens/pages/landing_page.dart';
 import 'firebase_options.dart';
+import 'layout/main_layout.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +41,7 @@ class DevaernApp extends StatelessWidget {
         textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.black)),
       ),
       home: const HomeLayout(child: LandingPage()),
+      routes: {'/dashboard': (context) => const MainLayout()},
     );
   }
 }

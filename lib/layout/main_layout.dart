@@ -53,28 +53,30 @@ class _MainLayoutState extends State<MainLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          const NavbarWidget(),
-          Expanded(
-            child: Row(
-              children: [
-                Sidebar(
-                  activeKey: activePage,
-                  onItemSelected: _onSidebarItemTap,
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(32),
-                    child: _getActivePage(),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Column(
+          children: [
+            const NavbarWidget(),
+            Expanded(
+              child: Row(
+                children: [
+                  Sidebar(
+                    activeKey: activePage,
+                    onItemSelected: _onSidebarItemTap,
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(32),
+                      child: _getActivePage(),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
